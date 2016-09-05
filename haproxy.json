@@ -1,0 +1,21 @@
+{
+    "id": "haproxy"
+    "container": {
+        "docker": {
+            "image": "sargun/haproxy-demo:3",
+            "network": "HOST"
+        },
+        "type": "DOCKER"
+    },
+    "cpus": 0.2,
+    "env": {
+        "CONFIGURL": "https://gist.githubusercontent.com/popnam/5a9ddcf99691a6fa35d2042f9127f384/raw/bbb59096a5b15fe256f14361272825adef70b4aa/haproxy.cfg"
+    },
+    "instances": 1,
+    "mem": 128,
+    "ports": [
+        80,9090
+    ],
+    "requirePorts": true
+}
+
