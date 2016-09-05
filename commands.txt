@@ -2,4 +2,10 @@
 dig a hello-world.marathon.mesos
 dig srv _hello-world._tcp.marathon.mesos
 
-# 
+# Marathon restart
+sudo service dcos-marathon restart
+
+#Admin endpoints
+http://m1.dcos/marathon
+http://m1.dcos/mesos
+http://m1.dcos/exhibitor
