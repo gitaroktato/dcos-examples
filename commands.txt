@@ -1,0 +1,5 @@
+# DNS service registry
+dig a hello-world.marathon.mesos
+dig srv _hello-world._tcp.marathon.mesos
+
+# 
