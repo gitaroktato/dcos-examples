@@ -1,0 +1,35 @@
+{
+  "id": "/flaky-http-server",
+  "cmd": "/bin/sh -c 'apk --update upgrade; apk add ca-certificates wget; update-ca-certificates; wget https://gist.githubusercontent.com/popnam/80bd958210b44f6964e71e75c2dbe7c2/raw/4cdf33cf22a5d9ecb56685c9fb9aab0d476a1f7d/flaky-http-server.py; python3 flaky-http-server.py'",
+  "cpus": 0.2,
+  "mem": 32.0,
+  "healthChecks": [
+    {
+      "protocol": "HTTP",
+      "path": "/",
+      "gracePeriodSeconds": 5,
+      "intervalSeconds": 1,
+      "timeoutSeconds": 20,
+      "maxConsecutiveFailures": 3,
+      "portType": "PORT_INDEX",
+      "ignoreHttp1xx": false
+    }
+  ],
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "python:3-alpine",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "protocol": "tcp",
+          "name": "web",
+          "servicePort": 8080,
+          "hostPort": 0
+        }
+      ]
+    }
+  }
+}
+
