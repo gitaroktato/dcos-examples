@@ -9,3 +9,7 @@ sudo service dcos-marathon restart
 http://m1.dcos/marathon
 http://m1.dcos/mesos
 http://m1.dcos/exhibitor
+
+# Marathon commands
+dcos marathon group add ./redis-group.json
+
