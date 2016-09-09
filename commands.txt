@@ -5,7 +5,7 @@ dig srv _hello-world._tcp.marathon.mesos
 # Marathon restart
 sudo service dcos-marathon restart
 
-#Admin endpoints
+# Admin endpoints
 http://m1.dcos/marathon
 http://m1.dcos/mesos
 http://m1.dcos/exhibitor
@@ -13,3 +13,9 @@ http://m1.dcos/exhibitor
 # Marathon commands
 dcos marathon group add ./redis-group.json
 
+# Query python app
+while true; do curl --connect-timeout 1 a2.dcos || true; sleep 0.2; done
+
+# Use python REST API
+curl -XPOST --data 'Hihi' localhost:8080
+curl localhost:8080
