@@ -1,6 +1,6 @@
 import socket
 import redis
-import os
+import sys
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
@@ -9,15 +9,19 @@ class RequestHandler(BaseHTTPRequestHandler):
 
     # Construct
     def __init__(self, request, client_address, server):
-        pool = redis.ConnectionPool(host='192.168.65.111', port=6379, db=0)
-        self.redis = redis.Redis(connection_pool=pool)
+        # Connect to master with a pool
+        pool = redis.ConnectionPool(host=sys.argv[1], port=6379, db=0)
+        self.redis_master = redis.Redis(connection_pool=pool)
         super().__init__(request, client_address, server)
 
     # GET
     def do_GET(self):
 
         # Get data from Redis
-        foo = self.redis.get('foo')
+        redis_slave = redis.StrictRedis(host=sys.argv[2], port=6379, db=0)
+        foo = redis_slave.get('foo')
+        if (foo is None):
+            foo = b'None'
 
         # Send response status code
         self.send_response(200)
@@ -41,7 +45,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         postVars = bytes(self.rfile.read(varLen))
 
         # Send data from Redis
-        foo = self.redis.set('foo', postVars)
+        foo = self.redis_master.set('foo', postVars)
 
         # Send response status code
         self.send_response(200)
