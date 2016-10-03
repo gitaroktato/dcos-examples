@@ -2,11 +2,11 @@
   "id": "marathon-lb-autoscale",
   "args":[
     "--marathon", "http://leader.mesos:8080",
-    "--haproxy", "http://haproxy-webapp-cluster.marathon.mesos:9090",
+    "--haproxy", "http://haproxy.marathon.mesos:9090",
     "--interval", "1",
     "--target-rps", "1",
     "--threshold-instances", "1",
-    "--apps", "webapp-webapp-cluster_8080"
+    "--apps", "layer4lb_8080"
   ],
   "cpus": 0.1,
   "mem": 16.0,
