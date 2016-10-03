@@ -1,6 +1,6 @@
 {
   "id": "/layer4lb",
-  "cmd": "/bin/sh -c 'apk --update upgrade; apk add ca-certificates wget; update-ca-certificates; wget https://gist.githubusercontent.com/popnam/13a432461e9150df114d20deedb4fba4/raw/66a8279315dddc452c5c9e1a143c0b43bddc0e23/simple-app.py; python3 simple-app.py '",
+  "cmd": "/bin/sh -c 'apk --update upgrade; apk add ca-certificates wget; update-ca-certificates; wget http://10.0.13.97:8080/simple-http-server.py; python3 simple-http-server.py'",
   "cpus": 0.2,
   "mem": 32.0,
   "healthChecks": [

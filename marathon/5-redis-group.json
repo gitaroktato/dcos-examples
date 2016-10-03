@@ -1,0 +1,47 @@
+{
+	"id": "/cluster",
+	"groups": [
+		{  
+			"id": "/cluster/redis",
+			"apps": [
+				{
+					"id": "/cluster/redis/slave",
+					"cpus": 0.8,
+					"mem": 32.0,
+					"instances": 2,
+					"cmd": "redis-server --slaveof master-redis-cluster.marathon.mesos 6379",
+					"constraints": [["hostname", "UNIQUE", ""]],
+					"dependencies": ["/cluster/redis/master"],
+					"container": {
+						"type": "DOCKER",
+						"docker": {
+							"image": "redis:3.2-alpine",
+							"network": "BRIDGE",
+							"portMappings": [
+								{ "containerPort": 6379, "hostPort": 0 }
+							]
+						}
+					}
+				},
+				{
+					"id": "/cluster/redis/master",
+					"cpus": 0.5,
+					"mem": 32.0,
+					"cmd": "redis-server",
+					"constraints": [["hostname", "UNIQUE", ""]],
+					"container": {
+						"type": "DOCKER",
+						"docker": {
+							"image": "redis:3.2-alpine",
+							"network": "BRIDGE",
+							"portMappings": [
+								{ "containerPort": 6379, "hostPort": 6379 }
+							]
+						}
+					}
+				}
+			]
+		}
+	]
+}
+
