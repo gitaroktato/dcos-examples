@@ -19,3 +19,6 @@ while true; do curl --connect-timeout 1 a2.dcos || true; sleep 0.2; done
 # Use python REST API
 curl -XPOST --data 'Hihi' localhost:8080
 curl localhost:8080
+
+# Install dig on CentOS
+yum install bind-utils

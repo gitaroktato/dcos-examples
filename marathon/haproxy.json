@@ -1,5 +1,5 @@
 {
-    "id": "haproxy"
+    "id": "haproxy",
     "container": {
         "docker": {
             "image": "sargun/haproxy-demo:3",
