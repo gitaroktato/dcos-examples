@@ -110,18 +110,31 @@
 				},
 				{
 					"id": "haproxy",
+			    	"dependencies": ["webapp"],
 					"cpus": 0.2,
 					"instances": 1,
 					"mem": 32,
+				    "env": {
+				        "CONFIGURL": "http://10.0.13.97:8080/end-to-end-haproxy.cfg"
+				    },
+					"constraints": [["hostname", "UNIQUE", ""]],
+					"healthChecks": [
+						{
+							"protocol": "HTTP",
+							"path": "/haproxy?stats",
+							"gracePeriodSeconds": 5,
+							"intervalSeconds": 5,
+							"timeoutSeconds": 20,
+							"maxConsecutiveFailures": 3,
+							"port": 9090,
+							"ignoreHttp1xx": false
+						}
+					],
 					"container": {
 						"type": "DOCKER",
 						"docker": {
 							"image": "sargun/haproxy-demo:3",
-							"network": "BRIDGE",
-							"portMappings": [
-								{ "containerPort": 80, "protocol": "tcp", "hostPort": 80 },
-								{ "containerPort": 9090, "protocol": "tcp", "hostPort": 9090 }
-							]
+							"network": "HOST"
 						}
 					}
 				}
