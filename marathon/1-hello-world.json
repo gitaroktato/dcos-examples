@@ -9,8 +9,8 @@
       "path": "/",
       "gracePeriodSeconds": 5,
       "intervalSeconds": 5,
-      "timeoutSeconds": 20,
-      "maxConsecutiveFailures": 3,
+      "timeoutSeconds": 5,
+      "maxConsecutiveFailures": 1,
       "portType": "PORT_INDEX",
       "ignoreHttp1xx": false
     }
