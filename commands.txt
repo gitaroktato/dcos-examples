@@ -22,3 +22,9 @@ curl localhost:8080
 
 # Install dig on CentOS
 yum install bind-utils
+
+# DCOS set core URL
+dcos config set core.dcos_url http://localhost:8080
+
+#Login to DCOS in Azure
+sudo ssh -L 8080:localhost:80 -f -N itfdemo@mshudxdcosmgmt.westeurope.cloudapp.azure.com -p 2200 -i ~/.ssh/itf-demo.pem

@@ -72,7 +72,7 @@
 			"apps": [
 				{
 					"id": "webapp",
-					"cmd": "/bin/sh -c 'apk --update upgrade; apk add ca-certificates wget; update-ca-certificates; wget 10.0.13.97:8080/http-server-redis.py; pip install redis; python3 http-server-redis.py master-redis-cluster.marathon.mesos slave-redis-cluster.marathon.mesos'",
+					"cmd": "/bin/sh -c 'apk --update upgrade; apk add ca-certificates wget; update-ca-certificates; wget https://gist.githubusercontent.com/popnam/4310d229d1ba35f41a8422738e5cd4b7/raw/ebe04271810e2731c93168b516a3d7ebbf958bab/http-server-redis.py master-redis-cluster.marathon.mesos slave-redis-cluster.marathon.mesos'",
 					"cpus": 0.2,
 					"mem": 32.0,
 					"instances": 2,
@@ -115,7 +115,7 @@
 					"instances": 1,
 					"mem": 32,
 				    "env": {
-				        "CONFIGURL": "http://10.0.13.97:8080/end-to-end-haproxy.cfg"
+				        "CONFIGURL": "https://gist.githubusercontent.com/popnam/9553619c7d221e9d5b88eb568484b1c9/raw/b0264175070cf104d0b2cbc78d61be46c2c3d37b/end-to-end-haproxy.cfg"
 				    },
 					"constraints": [["hostname", "UNIQUE", ""]],
 					"healthChecks": [
