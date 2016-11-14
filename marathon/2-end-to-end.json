@@ -1,7 +1,7 @@
 {
 	"id": "/cluster",
 	"groups": [
-		{  
+		{
 			"id": "/cluster/redis",
 			"apps": [
 				{
@@ -66,13 +66,13 @@
 				}
 			]
 		},
-		{  
+		{
 			"id": "/cluster/webapp",
 			"dependencies": ["/cluster/redis"],
 			"apps": [
 				{
 					"id": "webapp",
-					"cmd": "/bin/sh -c 'apk --update upgrade; apk add ca-certificates wget; update-ca-certificates; wget 10.0.13.97:8080/http-server-redis.py; pip install redis; python3 http-server-redis.py master-redis-cluster.marathon.mesos slave-redis-cluster.marathon.mesos'",
+					"cmd": "/bin/sh -c 'apk --update upgrade; apk add ca-certificates wget; update-ca-certificates; wget 10.0.165.11:8080/http-server-redis.py; pip install redis; python3 http-server-redis.py master-redis-cluster.marathon.mesos slave-redis-cluster.marathon.mesos'",
 					"cpus": 0.2,
 					"mem": 32.0,
 					"instances": 2,
@@ -115,7 +115,7 @@
 					"instances": 1,
 					"mem": 32,
 				    "env": {
-				        "CONFIGURL": "http://10.0.13.97:8080/end-to-end-haproxy.cfg"
+				        "CONFIGURL": "http://10.0.165.11:8080/end-to-end-haproxy.cfg"
 				    },
 					"constraints": [["hostname", "UNIQUE", ""]],
 					"healthChecks": [
@@ -142,4 +142,3 @@
 		}
 	]
 }
-
