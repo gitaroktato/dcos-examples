@@ -1,3 +1,7 @@
+# DC/OS examples
+* [Presentation](https://github.com/gitaroktato/dcos-examples/blob/master/presentation/Introduction_to_DCOS.odp?raw=true)
+* [Demo video #1](https://github.com/gitaroktato/dcos-examples/blob/master/presentation/DCOS-hello-world.mp4?raw=true)
+* [Demo video #2](https://github.com/gitaroktato/dcos-examples/blob/master/presentation/DCOS-end-to-end.mp4?raw=true)
 # Usage
 Use [DCOS Vagrant project](https://github.com/dcos/dcos-vagrant) to build your cluster.
 ## Versions used
